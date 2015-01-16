@@ -21,6 +21,7 @@ object build extends Build {
     crossPaths := false,
     name := msgpack4zApiName,
     javacOptions in compile ++= Seq("-target", "6", "-source", "6"),
+    javacOptions in (Compile, doc) ++= Seq("-locale", "en_US"),
     commands += Command.command("updateReadme")(UpdateReadme.updateReadmeTask),
     credentials ++= PartialFunction.condOpt(sys.env.get("SONATYPE_USER") -> sys.env.get("SONATYPE_PASS")){
       case (Some(user), Some(pass)) =>
