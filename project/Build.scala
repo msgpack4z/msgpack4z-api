@@ -45,7 +45,7 @@ object build extends Build {
       "-language:implicitConversions" ::
       Nil
     ) ::: unusedWarnings,
-    scalaVersion := "2.11.5",
+    scalaVersion := "2.11.6",
     crossScalaVersions := scalaVersion.value :: Nil,
     pomExtra :=
       <developers>
