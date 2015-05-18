@@ -14,6 +14,12 @@ object build extends Build {
 
   val modules = msgpack4zApiName :: Nil
 
+  private[this] val unusedWarnings = (
+    "-Ywarn-unused" ::
+    "-Ywarn-unused-import" ::
+    Nil
+  )
+
   lazy val msgpack4zApi = Project("msgpack4z-api", file(".")).settings(
     ReleasePlugin.releaseSettings ++ ReleasePlugin.extraReleaseCommands ++  sonatypeSettings: _*
   ).settings(
@@ -38,12 +44,7 @@ object build extends Build {
       "-language:higherKinds" ::
       "-language:implicitConversions" ::
       Nil
-    ),
-    scalacOptions in compile ++= (
-      "-Ywarn-unused" ::
-      "-Ywarn-unused-import" ::
-      Nil
-    ),
+    ) ::: unusedWarnings,
     scalaVersion := "2.11.5",
     crossScalaVersions := scalaVersion.value :: Nil,
     pomExtra :=
@@ -61,6 +62,10 @@ object build extends Build {
       </scm>
     ,
     description := "msgpack4z api"
+  ).settings(
+    Seq(Compile, Test).flatMap(c =>
+      scalacOptions in (c, console) ~= {_.filterNot(unusedWarnings.toSet)}
+    )
   )
 
 }
