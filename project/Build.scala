@@ -21,7 +21,7 @@ object build extends Build {
   )
 
   lazy val msgpack4zApi = Project("msgpack4z-api", file(".")).settings(
-    ReleasePlugin.releaseSettings ++ ReleasePlugin.extraReleaseCommands ++  sonatypeSettings: _*
+    ReleasePlugin.extraReleaseCommands ++ sonatypeSettings: _*
   ).settings(
     autoScalaLibrary := false,
     crossPaths := false,
