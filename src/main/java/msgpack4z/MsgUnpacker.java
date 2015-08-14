@@ -21,6 +21,7 @@ public interface MsgUnpacker {
     void unpackNil() throws IOException;
     String unpackString() throws IOException;
     byte[] unpackBinary() throws IOException;
+    ExtensionTypeHeader unpackExtensionType() throws IOException;
     void close() throws IOException;
 
 }
