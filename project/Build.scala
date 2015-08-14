@@ -29,6 +29,7 @@ object build extends Build {
     javacOptions in compile ++= Seq("-target", "6", "-source", "6"),
     javacOptions in (Compile, doc) ++= Seq("-locale", "en_US"),
     commands += Command.command("updateReadme")(UpdateReadme.updateReadmeTask),
+    libraryDependencies += "org.msgpack" % "msgpack-core" % "0.7.0-M6",
     credentials ++= PartialFunction.condOpt(sys.env.get("SONATYPE_USER") -> sys.env.get("SONATYPE_PASS")){
       case (Some(user), Some(pass)) =>
         Credentials("Sonatype Nexus Repository Manager", "oss.sonatype.org", user, pass)
