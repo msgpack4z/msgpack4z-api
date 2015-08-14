@@ -3,6 +3,8 @@ package msgpack4z;
 import java.io.IOException;
 import java.math.BigInteger;
 
+import org.msgpack.core.ExtensionTypeHeader;
+
 public interface MsgUnpacker {
 
     MsgType nextType() throws IOException;
@@ -21,6 +23,7 @@ public interface MsgUnpacker {
     void unpackNil() throws IOException;
     String unpackString() throws IOException;
     byte[] unpackBinary() throws IOException;
+    ExtensionTypeHeader unpackExtensionType() throws IOException;
     void close() throws IOException;
 
 }
