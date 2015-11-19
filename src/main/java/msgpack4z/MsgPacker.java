@@ -20,6 +20,8 @@ public interface MsgPacker {
     void packNil() throws IOException;
     void packString(String a) throws IOException;
     void packBinary(byte[] a) throws IOException;
+    void packExtTypeHeader(byte extType, int payloadLen) throws IOException;
+    void writePayload(byte[] a) throws IOException;
     byte[] result() throws IOException;
 
 }
