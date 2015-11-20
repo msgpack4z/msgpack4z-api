@@ -23,6 +23,7 @@ object build extends Build {
   lazy val msgpack4zApi = Project("msgpack4z-api", file(".")).settings(
     ReleasePlugin.extraReleaseCommands ++ sonatypeSettings: _*
   ).settings(
+    fullResolvers ~= {_.filterNot(_.name == "jcenter")},
     autoScalaLibrary := false,
     crossPaths := false,
     name := msgpack4zApiName,
