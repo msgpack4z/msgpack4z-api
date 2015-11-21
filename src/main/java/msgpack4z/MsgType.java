@@ -34,7 +34,7 @@ public enum MsgType {
      */
     BINARY,
     /**
-     * <a href="https://github.com/msgpack/msgpack/blob/master/spec.md#ext-format-family">extended type</a>
+     * <a href="https://github.com/msgpack/msgpack/blob/master/spec.md#ext-format-family">extension type</a>
      */
-    EXTENDED
+    EXTENSION
 }
