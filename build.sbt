@@ -6,8 +6,6 @@ import build._
 
 ReleasePlugin.extraReleaseCommands
 
-sonatypeSettings
-
 autoScalaLibrary := false
 
 crossPaths := false
