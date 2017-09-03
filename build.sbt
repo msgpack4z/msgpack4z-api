@@ -1,7 +1,4 @@
 import sbtrelease._
-import xerial.sbt.Sonatype._
-import ReleaseStateTransformations._
-import com.typesafe.sbt.pgp.PgpKeys
 import build._
 
 ReleasePlugin.extraReleaseCommands
@@ -39,7 +36,7 @@ scalacOptions ++= (
   Nil
 ) ::: unusedWarnings
 
-scalaVersion := "2.11.8"
+scalaVersion := "2.12.3"
 
 crossScalaVersions := scalaVersion.value :: Nil
 
@@ -61,4 +58,11 @@ description := "msgpack4z api"
 
 Seq(Compile, Test).flatMap(c =>
   scalacOptions in (c, console) ~= {_.filterNot(unusedWarnings.toSet)}
+)
+
+publishTo := Some(
+  if (isSnapshot.value)
+    Opts.resolver.sonatypeSnapshots
+  else
+    Opts.resolver.sonatypeStaging
 )
