@@ -9,7 +9,6 @@ object build {
 
   val unusedWarnings = (
     "-Ywarn-unused" ::
-    "-Ywarn-unused-import" ::
     Nil
   )
 }
