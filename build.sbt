@@ -9,9 +9,9 @@ crossPaths := false
 
 name := msgpack4zApiName
 
-javacOptions in compile ++= Seq("-target", "6", "-source", "6")
+compile / javacOptions ++= Seq("-target", "6", "-source", "6")
 
-javacOptions in (Compile, doc) ++= Seq("-locale", "en_US")
+Compile / doc / javacOptions ++= Seq("-locale", "en_US")
 
 commands += Command.command("updateReadme")(UpdateReadme.updateReadmeTask)
 
@@ -52,7 +52,7 @@ pomExtra :=
 description := "msgpack4z api"
 
 Seq(Compile, Test).flatMap(c =>
-  scalacOptions in (c, console) ~= {_.filterNot(unusedWarnings.toSet)}
+  c / console / scalacOptions --= unusedWarnings
 )
 
 publishTo := (if (isSnapshot.value) None else localStaging.value)
