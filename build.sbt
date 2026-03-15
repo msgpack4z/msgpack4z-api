@@ -31,7 +31,7 @@ scalacOptions ++= (
   Nil
 ) ::: unusedWarnings
 
-scalaVersion := "2.12.8"
+scalaVersion := "2.12.21"
 
 crossScalaVersions := scalaVersion.value :: Nil
 
