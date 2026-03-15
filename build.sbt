@@ -15,11 +15,6 @@ javacOptions in (Compile, doc) ++= Seq("-locale", "en_US")
 
 commands += Command.command("updateReadme")(UpdateReadme.updateReadmeTask)
 
-credentials ++= PartialFunction.condOpt(sys.env.get("SONATYPE_USER") -> sys.env.get("SONATYPE_PASS")){
-  case (Some(user), Some(pass)) =>
-    Credentials("Sonatype Nexus Repository Manager", "oss.sonatype.org", user, pass)
-}.toList
-
 organization := "com.github.xuwei-k"
 
 homepage := Some(url("https://github.com/msgpack4z"))
@@ -60,9 +55,4 @@ Seq(Compile, Test).flatMap(c =>
   scalacOptions in (c, console) ~= {_.filterNot(unusedWarnings.toSet)}
 )
 
-publishTo := Some(
-  if (isSnapshot.value)
-    Opts.resolver.sonatypeSnapshots
-  else
-    Opts.resolver.sonatypeStaging
-)
+publishTo := (if (isSnapshot.value) None else localStaging.value)
