@@ -4,7 +4,7 @@ import sbtrelease.Git
 
 object UpdateReadme {
 
-  val updateReadmeTask = { state: State =>
+  val updateReadmeTask = { (state: State) =>
     val extracted = Project.extract(state)
     val v = extracted get version
     val org =  extracted get organization
