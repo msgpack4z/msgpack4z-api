@@ -1,7 +1,7 @@
 object build {
 
   def gitHash: String =
-    sys.process.Process("git rev-parse HEAD").lineStream_!.head
+    sys.process.Process("git rev-parse HEAD").lazyLines_!.head
 
   val msgpack4zApiName = "msgpack4z-api"
 

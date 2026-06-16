@@ -9,7 +9,7 @@ crossPaths := false
 
 name := msgpack4zApiName
 
-compile / javacOptions ++= Seq("-target", "6", "-source", "6")
+compile / javacOptions ++= Seq("-target", "7", "-source", "7")
 
 Compile / doc / javacOptions ++= Seq("-locale", "en_US")
 
