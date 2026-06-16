@@ -2,15 +2,9 @@ addSbtPlugin("com.github.sbt" % "sbt-pgp" % "2.3.1")
 
 addSbtPlugin("com.github.sbt" % "sbt-release" % "1.5.0")
 
-scalacOptions ++= (
-  "-deprecation" ::
-  "-unchecked" ::
-  "-Xlint:-unused,_" ::
-  "-Ywarn-unused:privates,locals,implicits" ::
-  "-language:existentials" ::
-  "-language:higherKinds" ::
-  "-language:implicitConversions" ::
-  Nil
+scalacOptions ++= Seq(
+  "-deprecation",
+  "-unchecked",
+  "-language:existentials",
+  "-language:implicitConversions",
 )
-
-fullResolvers ~= {_.filterNot(_.name == "jcenter")}
